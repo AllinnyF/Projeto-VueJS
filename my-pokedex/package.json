@@ -8,6 +8,7 @@
     "dev": "webpack-dev-server",
     "start": "npm run dev",
     "unit": "node_modules/.bin/jest",
+    "test:coverage": "npm run unit -- --coverage",
     "test": "npm run unit",
     "lint": "node_modules/.bin/eslint './src/**/*.js' './src/**/*.vue' './test/unit/**/*.spec.js'",
     "build": "node_modules/.bin/webpack --display-error-details",

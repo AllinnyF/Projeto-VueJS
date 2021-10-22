@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1634840307050" clover="3.2.0">
+  <project timestamp="1634840307050" name="All files">
+    <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="6" coveredelements="6" complexity="0" loc="6" ncloc="6" packages="1" files="1" classes="1">
+      <file name="pokeApi.service.js" path="/home/allinny/Projeto-VueJS/my-pokedex/src/service/pokeApi.service.js">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+      </file>
+    </metrics>
+  </project>
+</coverage>

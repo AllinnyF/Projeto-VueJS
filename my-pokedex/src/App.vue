@@ -2,16 +2,18 @@
   <div id="app">
     <!--    <img src="./assets/logo.png">-->
     <Pokedex/>
+    <ItemDeLista/>
   </div>
 </template>
 
 <script>
 import Pokedex from "./components/Pokedex";
-
+import ItemDeLista from "./components/ItemDeLista";
 export default {
   name: 'App',
   components: {
-    Pokedex
+    Pokedex,
+    ItemDeLista
   }
 }
 </script>

@@ -1,17 +1,16 @@
-const axios = require('axios');
+import { axiosInstance } from './config';
+
 export default {
   async pokemonList() {
-    const response = await axios.get('https://pokeapi.co/api/v2/pokemon?offset=100&limit=100');
+    const response = await axiosInstance.get('?offset=50&limit=50');
     return response.data.results;
   },
   async findPokemonByName(name) {
-    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
-    console.log(response.data);
+    const response = await axiosInstance.get(`/${name}`);
     return response.data;
   },
-  async findPokemonById(url) {
-    const response = await axios.get(url);
-    console.log(response.data);
+  async findPokemonById(id) {
+    const response = await axiosInstance.get(`/${id}`);
     return response.data;
   }
 }
