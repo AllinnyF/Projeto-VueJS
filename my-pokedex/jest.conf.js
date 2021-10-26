@@ -4,7 +4,6 @@ module.exports = {
   rootDir: path.resolve(__dirname, './'),
   testPathIgnorePatterns: [
     '<rootDir>/node_modules/',
-    '<rootDir>/test/',
     '<rootDir>/dist/',
   ],
   modulePathIgnorePatterns: [

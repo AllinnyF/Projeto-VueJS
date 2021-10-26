@@ -25,16 +25,8 @@ export default {
     }
   },
 
-  methods: {
-    updateCard() {
-      this.$sort(detailsCard);
-    }
-  },
-
   async mounted() {
     const urlArray = this.url.split('/');
-    // this.list = await pokeApiService.pokemonList('rhydon');
-    // await pokeApiService.findPokemonByName('rhydon');
     this.detailsCard = await pokeApiService.findPokemonById(urlArray[6]);
   }
 }
@@ -44,6 +36,7 @@ export default {
 <style scoped>
 
 div.cards-pokemons{
+  flex: 1;
   display: inline-flex;
 }
 
@@ -53,17 +46,19 @@ div.list-pokemon{
   padding: 50px;
   display: flex;
   flex-direction: column;
+  max-width: 90px;
 }
+
 img.img-pokemon{
-  order: 0;
+  order: initial;
 }
+
 span.name-pokemon{
-  margin: 10px;
-  font-size: 22px;
+  font-size: 20px;
   text-transform: capitalize;
   font-weight: 600;
   padding: 10px 5px;
-  padding-right: 30px;
-  padding-left: 12px;
+  display: inline-flex;
+  justify-content: center;
 }
 </style>

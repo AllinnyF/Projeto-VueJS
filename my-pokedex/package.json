@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "start": "npm run dev",
-    "unit": "node_modules/.bin/jest",
+    "unit": "node_modules/.bin/jest --config jest.conf.js --detectOpenHandles",
     "test:coverage": "npm run unit -- --coverage",
     "test": "npm run unit",
     "lint": "node_modules/.bin/eslint './src/**/*.js' './src/**/*.vue' './test/unit/**/*.spec.js'",
