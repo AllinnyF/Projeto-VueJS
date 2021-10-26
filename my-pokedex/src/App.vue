@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    <!--    <img src="./assets/logo.png">-->
+    <!-- <img src="./assets/logo.png"> -->
     <Pokedex/>
-    <ItemDeLista/>
+    <ListingPokemon/>
   </div>
-</template>
+</template> 
 
 <script>
 import Pokedex from "./components/Pokedex";
-import ItemDeLista from "./components/ItemDeLista";
+import ListingPokemon from './components/ListingPokemon.vue';
+
 export default {
-  name: 'App',
   components: {
     Pokedex,
-    ItemDeLista
+    ListingPokemon
   }
 }
 </script>

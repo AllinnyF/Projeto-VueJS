@@ -1,5 +1,9 @@
 <template>
   <div class="poke">
+    <!-- <ul>
+      <li v-for="pokemon in list" :key="pokemon.name"> {{ pokemon.name }}
+      </li>
+    </ul> -->
   </div>
 </template>
 
