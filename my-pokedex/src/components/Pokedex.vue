@@ -1,24 +1,22 @@
 <template>
-  <div class="poke">
-    <!-- <ul>
-      <li v-for="pokemon in list" :key="pokemon.name"> {{ pokemon.name }}
-      </li>
-    </ul> -->
+  <div class="main">
+    <ListingPokemon />
   </div>
 </template>
 
 <script>
-import pokeApiService from '../service/pokeApi.service';
+import ListingPokemon from './ListingPokemon';
 
 export default {
+
+components: {
+  ListingPokemon
+},
 
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1 {
-  font-weight: normal;
-  color: #45948d;
-}
+<style lang="css" scoped>
+
 </style>

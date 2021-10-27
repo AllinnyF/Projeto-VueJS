@@ -1,38 +1,37 @@
 <template>
-    <div class="listing-polemon">
-        <ListItem name="bulbasaur" url="https://pokeapi.co/api/v2/pokemon/1/" />
-        <ListItem name="Pokemon" url="https://pokeapi.co/api/v2/pokemon/2/"/>
-        <ListItem name="Pokemon" url="https://pokeapi.co/api/v2/pokemon/3/"/>
-        <ListItem name="Pokemon" url="https://pokeapi.co/api/v2/pokemon/4/"/>
-        <ListItem name="Pokemon" url="https://pokeapi.co/api/v2/pokemon/5/"/>
-        <ListItem name="Pokemon" url="https://pokeapi.co/api/v2/pokemon/6/"/>
+    <div class="listing-pokemon">
+        <ListItem v-for="pokemon in pokemonName" v-bind:key="pokemon.name.url" :name="pokemon.name" :url="pokemon.url"/>
     </div>
 </template>
 
 <script>
+
 import pokeApiService from '../service/pokeApi.service';
 import ListItem from "./ListItem";
 
 export default {
-
-    components: {
-        ListItem
-    },
+  
+  components: {
+    ListItem
+  },
 
   data () {
     return {
-   
+      pokemonName: [],
     }
   },
 
-  // async mounted() {
-  //   this.list = await pokeApiService.pokemonList('rhydon');
-  //   await pokeApiService.findPokemonByName('rhydon');
-  // }
+  async mounted() {
+    const pokemonNameList = this.pokemonName.map(name => name);
+    this.pokemonName = await pokeApiService.pokemonList(pokemonNameList);
+  }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="css" scoped>
+
+.listing-pokemon{
+  padding: 0px 600px 0px;
+}
 
 </style>

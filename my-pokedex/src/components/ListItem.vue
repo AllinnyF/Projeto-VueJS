@@ -1,7 +1,7 @@
 <template>
-  <div class="cards-pokemons">
+    <div class="cards-pokemons">
     <div class="list-pokemon">
-      <img :src="detailsCard.sprites.front_default" alt=""/>
+      <img :src="detailsCard.sprites.front_default"/> 
       <span class="name-pokemon"> {{ name }} </span>
     </div>
   </div>
@@ -11,9 +11,17 @@
 import pokeApiService from '../service/pokeApi.service';
 
 export default {
-  name: 'ListItem',
 
-  props: ['name', 'url'],
+  props: {
+    name: {
+      type: String,
+      required: true,
+    },
+    url: {
+      type: [ String, Array ], 
+      required: true,
+    }
+  },
 
   data () {
     return {
@@ -33,32 +41,28 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="css" scoped>
 
-div.cards-pokemons{
-  flex: 1;
-  display: inline-flex;
+.cards-pokemons{
+  margin: 10px;
+  display: inline-flex;  
+  flex-direction: column;
 }
 
-div.list-pokemon{
+.list-pokemon{
   border: 1px solid #ccc;
   border-radius: 4px;
-  padding: 50px;
   display: flex;
   flex-direction: column;
-  max-width: 90px;
+  background-color: whitesmoke;
+  padding: 10px 15px 20px;
 }
 
-img.img-pokemon{
-  order: initial;
-}
-
-span.name-pokemon{
-  font-size: 20px;
+.name-pokemon{
+  font-size: 18px;
+  color: #2c3e50;
   text-transform: capitalize;
   font-weight: 600;
-  padding: 10px 5px;
-  display: inline-flex;
-  justify-content: center;
 }
+
 </style>

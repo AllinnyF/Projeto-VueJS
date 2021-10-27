@@ -2,7 +2,7 @@ import { axiosInstance } from './config';
 
 export default {
   async pokemonList() {
-    const response = await axiosInstance.get('?offset=50&limit=50');
+    const response = await axiosInstance.get('?offset=0&limit=150');
     return response.data.results;
   },
   async findPokemonByName(name) {

@@ -29,7 +29,7 @@ describe('ListItem', () => {
         ).toBe('bulbasaur')
     });
 
-    xit('should be render props url', async () => {
+    it('should be render props url', async () => {
         jest.spyOn(pokeApiService, 'findPokemonById').mockResolvedValueOnce({
                 sprites: {
                     front_default: "teste"
