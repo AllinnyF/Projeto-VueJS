@@ -1,44 +1,44 @@
-import { mount } from '@vue/test-utils'
 import ListItem from '@/components/ListItem'
-import { axiosInstance } from '../../../src/service/config';
+import { shallowMount } from '@vue/test-utils';
 import pokeApiService from "../../../src/service/pokeApi.service";
 
-jest.mock('../../../src/service/config', () => ({
-    axiosInstance: {
-        get: jest.fn()
-    }
+jest.mock('../../../src/service/pokeApi.service', () => ({
+    findPokemonById: jest.fn()
 }));
 
-const urlMock = "https://pokeapi.co/api/v2/pokemon/1/";
+xdescribe('ListItem', () => {
+    describe('PropsData', () => {
+        it('should have props name and url', () => {
+            expect(ListItem.props.name).toEqual({ type: String, required: true });
+            expect(ListItem.props.url).toEqual({ type: String, required: true });
+        });
 
-describe('ListItem', () => {
+        xit('should validate data', () => {
+            expect(ListItem.data()).toEqual({ 
+                resultsApiService: {
+                    sprites: {
+                        front_default: ""
+                    }
+                }
+            })
+        });
 
-    //função que retorna o componente renderizado
-    function renderComponent(ListItem, propsData) {
-        return mount(ListItem, {
-            propsData
-        })
-    }
-
-
-    it('should be render props name', () => {
-        expect(
-            renderComponent(ListItem, {
-                name: 'bulbasaur',
-            }).text(),
-        ).toBe('bulbasaur')
-    });
-
-    it('should be render props url', async () => {
-        jest.spyOn(pokeApiService, 'findPokemonById').mockResolvedValueOnce({
+    })
+    
+    describe('Methods', () => {
+        it('should call pokeApiService when page is load ', async () => {
+            pokeApiService.findPokemonById.mockResolvedValueOnce({
                 sprites: {
                     front_default: "teste"
                 }
+            })
+            await shallowMount(ListItem, {
+                propsData: {
+                    name: "unown",
+                    url: "https://pokeapi.co/api/v2/pokemon/201/"
+                }
+            });
+            expect(pokeApiService.findPokemonById).toHaveBeenCalledWith('201')
         });
-        expect(
-            renderComponent(ListItem, {
-                url: urlMock,
-            }).text(),
-        ).toEqual('https://pokeapi.co/api/v2/pokemon/1/')
-    });
+    })
 })

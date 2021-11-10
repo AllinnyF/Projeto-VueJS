@@ -1,16 +1,18 @@
 <template>
   <div class="main">
+    <FindPokemon />
     <ListingPokemon />
   </div>
 </template>
 
 <script>
 import ListingPokemon from './ListingPokemon';
-
+import FindPokemon from './FindPokemon';
 export default {
 
 components: {
-  ListingPokemon
+  ListingPokemon,
+  FindPokemon
 },
 
 }

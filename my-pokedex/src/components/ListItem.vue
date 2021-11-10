@@ -1,16 +1,23 @@
 <template>
-    <div class="cards-pokemons">
+    <div class="cards">
     <div class="list-pokemon">
-      <img :src="detailsCard.sprites.front_default"/> 
+      <img :src="pokemonData.sprites.front_default" @click="showModal"/> 
       <span class="name-pokemon"> {{ name }} </span>
+      <ModalDetails v-on:closeModal="closeModal" v-if="isVisibleModal" :url="pokemonData.sprites.front_default" :name="pokemonData.name" 
+      :pokemonBaseExperience="pokemonData.base_experience" :pokemonHeight="pokemonData.height/10" :pokemonWeight="pokemonData.weight/10"
+      :pokemonType="this.indiceTypes()"
+      :pokemonInfoAbility="this.indiceAbilities()"/>
     </div>
   </div>
 </template>
 
 <script>
 import pokeApiService from '../service/pokeApi.service';
+import ModalDetails from './ModalDetails';
 
 export default {
+
+  components: { ModalDetails },
 
   props: {
     name: {
@@ -18,24 +25,62 @@ export default {
       required: true,
     },
     url: {
-      type: [ String, Array ], 
+      type: String, 
       required: true,
-    }
+    },
   },
 
   data () {
     return {
-      detailsCard: {
+      pokemonData: {
         sprites: {
           front_default: ""
-        }
-      }
+        },
+        base_experience: [],
+        height: null,
+        weight: null,
+        types: {
+          type: {
+            name: ""
+          }
+        },
+        abilities: {
+          ability: {
+            name: ""
+          }
+        },
+      },
+        
+      isVisibleModal: false,
+
     }
   },
 
-  async mounted() {
-    const urlArray = this.url.split('/');
-    this.detailsCard = await pokeApiService.findPokemonById(urlArray[6]);
+  created() { 
+    this.returnApiService(); 
+  },
+
+  methods: {
+    async returnApiService (){
+      const urlArray = this.url.split('/');
+      this.pokemonData = await pokeApiService.findPokemonById(urlArray[6]);
+    },
+    showModal() { 
+      this.isVisibleModal = true;
+    },
+    closeModal() {
+      this.isVisibleModal = false; 
+    }, 
+    indiceTypes() {
+      return this.pokemonData.types.map(itemType => itemType.type.name)
+    },
+    indiceAbilities() {
+      return this.pokemonData.abilities.map(itemAbility => itemAbility.ability.name)
+    }
+  },
+
+  mounted() {
+
   }
 }
 </script>
@@ -43,10 +88,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="css" scoped>
 
-.cards-pokemons{
+.cards{
   margin: 10px;
   display: inline-flex;  
-  flex-direction: column;
 }
 
 .list-pokemon{
@@ -59,7 +103,7 @@ export default {
 }
 
 .name-pokemon{
-  font-size: 18px;
+  font-size: 17px;
   color: #2c3e50;
   text-transform: capitalize;
   font-weight: 600;

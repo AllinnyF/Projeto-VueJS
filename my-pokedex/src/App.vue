@@ -8,10 +8,12 @@
 import Pokedex from "./components/Pokedex";
 
 export default {
+
   components: {
     Pokedex,
   },
 }
+
 </script>
 
 <style lang="css" scoped>

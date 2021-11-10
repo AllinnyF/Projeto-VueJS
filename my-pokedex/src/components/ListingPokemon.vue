@@ -1,6 +1,6 @@
 <template>
     <div class="listing-pokemon">
-        <ListItem v-for="pokemon in pokemonName" v-bind:key="pokemon.name.url" :name="pokemon.name" :url="pokemon.url"/>
+      <ListItem v-for="pokemon in pokemonName" v-bind:key="pokemon.name.url" :name="pokemon.name" :url="pokemon.url"/>
     </div>
 </template>
 
@@ -12,18 +12,28 @@ import ListItem from "./ListItem";
 export default {
   
   components: {
-    ListItem
+    ListItem,
   },
 
   data () {
     return {
       pokemonName: [],
-    }
+    }    
   },
 
-  async mounted() {
-    const pokemonNameList = this.pokemonName.map(name => name);
-    this.pokemonName = await pokeApiService.pokemonList(pokemonNameList);
+  created() { 
+    this.returnPokemonList(); 
+  },
+
+  methods: {
+    async returnPokemonList (){
+      const pokemonNameList = this.pokemonName.map(name => name);
+      this.pokemonName = await pokeApiService.pokemonList(pokemonNameList);
+    },
+  },
+
+  mounted() {
+
   }
 }
 </script>

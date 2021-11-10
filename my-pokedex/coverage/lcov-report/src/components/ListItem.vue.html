@@ -21,7 +21,7 @@
     <div class='clearfix'>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -94,7 +94,48 @@
 69
 70
 71
-72</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -104,7 +145,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -119,7 +165,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -128,9 +177,42 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -166,75 +248,116 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
-  &lt;div class="cards-pokemons"&gt;
+    &lt;div class="cards"&gt;
     &lt;div class="list-pokemon"&gt;
-      &lt;img :src="detailsCard.sprites.front_default" alt=""/&gt;
+      &lt;img :src="pokemonData.sprites.front_default" @click="showModal"/&gt; 
       &lt;span class="name-pokemon"&gt; {{ name }} &lt;/span&gt;
+      &lt;ModalDetails v-on:closeModal="closeModal" v-if="isVisibleModal" :url="pokemonData.sprites.front_default" :name="pokemonData.name" 
+      :pokemonBaseExperience="pokemonData.base_experience" :pokemonHeight="pokemonData.height/10" :pokemonWeight="pokemonData.weight/10"
+      :pokemonType="this.indiceTypes()"
+      :pokemonInfoAbility="this.indiceAbilities()"/&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/template&gt;
 &nbsp;
 &lt;script&gt;
 import pokeApiService from '../service/pokeApi.service';
+import ModalDetails from './ModalDetails';
 &nbsp;
 export default {
-  name: 'ListItem',
+&nbsp;
+  components: { ModalDetails },
 &nbsp;
   props: {
     name: {
+      type: String,
       required: true,
     },
     url: {
+      type: String, 
       required: true,
-    }
+    },
   },
 &nbsp;
-  data () {
-    return {
-      detailsCard: {
+<span class="fstat-no" title="function not covered" >  data () {</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+      pokemonData: {
         sprites: {
           front_default: ""
-        }
-      }
+        },
+        base_experience: [],
+        height: null,
+        weight: null,
+        types: {
+          type: {
+            name: ""
+          }
+        },
+        abilities: {
+          ability: {
+            name: ""
+          }
+        },
+      },
+        
+      isVisibleModal: false,
+&nbsp;
     }
   },
 &nbsp;
-  async mounted() {
-    const urlArray = this.url.split('/');
-    this.detailsCard = await pokeApiService.findPokemonById(urlArray[6]);
+<span class="fstat-no" title="function not covered" >  created() { </span>
+<span class="cstat-no" title="statement not covered" >    this.returnApiService(); </span>
+  },
+&nbsp;
+  methods: {
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    async returnApiService (){</span></span>
+<span class="cstat-no" title="statement not covered" >      const urlArray = this.url.split('/');</span>
+<span class="cstat-no" title="statement not covered" >      this.pokemonData = await pokeApiService.findPokemonById(urlArray[6]);</span>
+    },
+<span class="fstat-no" title="function not covered" >    showModal() { </span>
+<span class="cstat-no" title="statement not covered" >      this.isVisibleModal = true;</span>
+    },
+<span class="fstat-no" title="function not covered" >    closeModal() {</span>
+<span class="cstat-no" title="statement not covered" >      this.isVisibleModal = false; </span>
+    }, 
+<span class="fstat-no" title="function not covered" >    indiceTypes() {</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >      return this.pokemonData.types.map(itemType =&gt; itemType.type.name)</span></span>
+    },
+<span class="fstat-no" title="function not covered" >    indiceAbilities() {</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >      return this.pokemonData.abilities.map(itemAbility =&gt; itemAbility.ability.name)</span></span>
+    }
+  },
+&nbsp;
+<span class="fstat-no" title="function not covered" >  mounted() {</span>
+&nbsp;
   }
 }
 &lt;/script&gt;
 &nbsp;
 &lt;!-- Add "scoped" attribute to limit CSS to this component only --&gt;
-&lt;style scoped&gt;
+&lt;style lang="css" scoped&gt;
 &nbsp;
-div.cards-pokemons{
-  flex: 1;
-  display: inline-flex;
+.cards{
+  margin: 10px;
+  display: inline-flex;  
 }
 &nbsp;
-div.list-pokemon{
+.list-pokemon{
   border: 1px solid #ccc;
   border-radius: 4px;
-  padding: 50px;
   display: flex;
   flex-direction: column;
-  max-width: 90px;
+  background-color: whitesmoke;
+  padding: 10px 15px 20px;
 }
 &nbsp;
-img.img-pokemon{
-  order: initial;
-}
-&nbsp;
-span.name-pokemon{
-  font-size: 20px;
+.name-pokemon{
+  font-size: 17px;
+  color: #2c3e50;
   text-transform: capitalize;
   font-weight: 600;
-  padding: 10px 5px;
-  display: inline-flex;
-  justify-content: center;
 }
+&nbsp;
 &lt;/style&gt;
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -242,7 +365,7 @@ span.name-pokemon{
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 27 2021 09:39:14 GMT-0300 (Horário Padrão de Brasília)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 10 2021 17:26:03 GMT-0300 (Horário Padrão de Brasília)
 </div>
 </div>
 <script src="../../prettify.js"></script>

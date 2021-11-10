@@ -19,7 +19,7 @@ describe('Pokedex', () => {
       axiosInstance.get.mockResolvedValueOnce(response);
       const results = await pokeApi.pokemonList();
       expect(results).toEqual(data.results);
-      expect(axiosInstance.get).toHaveBeenLastCalledWith('?offset=50&limit=50')
+      expect(axiosInstance.get).toHaveBeenLastCalledWith('?offset=0&limit=150')
   });
   it('should return pokemon details when search by name', async () => {
     const data = { results: [{name: 'starmie'}] };
