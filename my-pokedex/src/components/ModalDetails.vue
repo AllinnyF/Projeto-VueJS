@@ -98,41 +98,40 @@ export default{
         this.$emit('closeModal'); 
     }, 
     returnDifColorOfTypes(colorType){
-        if (colorType === "bug"){
+        if (colorType === "Bug"){
             return "bug"
-        }else if (colorType === "dark"){
+        }else if (colorType === "Dark"){
             return "dark"
-        }else if (colorType === "dragon"){
+        }else if (colorType === "Dragon"){
             return "dragon"
-        }else if (colorType === "electric"){
+        }else if (colorType === "Electric"){
             return "electric"
-        }else if (colorType === "fairy"){
+        }else if (colorType === "Fairy"){
             return "fairy"
-        }else if (colorType === "fighting"){
+        }else if (colorType === "Fighting"){
             return "fighting"
-        }else if (colorType === "fire"){
+        }else if (colorType === "Fire"){
             return "fire"
-        }else if (colorType === "ghost"){
+        }else if (colorType === "Ghost"){
             return "ghost"
         }else if (colorType === "Grass"){
             console.log("grass")
             return "grass"
-        }else if (colorType === "ground"){
+        }else if (colorType === "Ground"){
             return "ground"
-        }else if (colorType === "ice"){
+        }else if (colorType === "Ice"){
             return "ice"
-        }else if (colorType === "normal"){
+        }else if (colorType === "Normal"){
             return "normal"
-        }else if (colorType === "psychic"){
+        }else if (colorType === "Poison"){
+            return "poison"
+        }else if (colorType === "Psychic"){
             return "psychic"
-        }else if (colorType === "rock"){
+        }else if (colorType === "Rock"){
             return "rock"
-        }else if (colorType === "grass"){
-            console.log("grass")
-            return "grass"
-        }else if (colorType === "steel"){
+        }else if (colorType === "Steel"){
             return "steel"
-        }else if (colorType === "water"){
+        }else if (colorType === "Water"){
             return "water"
         } return;
     }
