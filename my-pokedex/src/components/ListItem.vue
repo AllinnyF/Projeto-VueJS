@@ -4,9 +4,9 @@
       <img :src="pokemonData.sprites.front_default" @click="showModal"/> 
       <span class="name-pokemon"> {{ name }} </span>
       <ModalDetails v-on:closeModal="closeModal" v-if="isVisibleModal" :url="pokemonData.sprites.front_default" :name="pokemonData.name" 
-      :pokemonBaseExperience="pokemonData.base_experience" :pokemonHeight="pokemonData.height/10" :pokemonWeight="pokemonData.weight/10"
-      :pokemonType="this.indiceTypes()"
-      :pokemonInfoAbility="this.indiceAbilities()"/>
+      :pokemonBaseExperiences="pokemonData.base_experience" :pokemonHeights="pokemonData.height/10" :pokemonWeights="pokemonData.weight/10"
+      :pokemonTypes="this.indiceTypes()"
+      :pokemonInfoAbilities="this.indiceAbilities()"/>
     </div>
   </div>
 </template>
@@ -89,22 +89,22 @@ export default {
 <style lang="css" scoped>
 
 .cards{
-  margin: 10px;
+  margin: 0.625rem;
   display: inline-flex;  
 }
 
 .list-pokemon{
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 0.063rem solid rgb(204, 204, 204);
+  border-radius: 0.25rem;
   display: flex;
   flex-direction: column;
-  background-color: whitesmoke;
-  padding: 10px 15px 20px;
+  background-color: rgb(245, 245, 245);
+  padding: 0.625rem 0.938rem 1.25rem;
 }
 
 .name-pokemon{
-  font-size: 17px;
-  color: #2c3e50;
+  font-size: 1.063rem;
+  color: rgb(44, 62, 80);
   text-transform: capitalize;
   font-weight: 600;
 }

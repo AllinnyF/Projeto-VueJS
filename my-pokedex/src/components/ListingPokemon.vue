@@ -41,7 +41,7 @@ export default {
 <style lang="css" scoped>
 
 .listing-pokemon{
-  padding: 0px 600px 0px;
+  padding: 0rem 37.5rem 0rem;
 }
 
 </style>

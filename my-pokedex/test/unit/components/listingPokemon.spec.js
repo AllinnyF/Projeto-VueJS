@@ -5,9 +5,10 @@ import pokeApiService from "../../../src/service/pokeApi.service";
 jest.mock('../../../src/service/pokeApi.service', () => ({
     pokemonList: jest.fn()
 }));
-xdescribe('ListingPokemon', () => {
+
+describe('ListingPokemon', () => {
     describe('Validate components and data', () => {
-        it('should have components ', () => {
+        it('should have component ListItem', () => {
             expect(ListingPokemon.components).toHaveProperty('ListItem')
         });
 
@@ -18,7 +19,7 @@ xdescribe('ListingPokemon', () => {
         })
     })
     
-    describe('Mounted', () => {
+    describe('Methods', () => {
 
         it('should return an array of names when the service is called', async () => {
             pokeApiService.pokemonList.mockResolvedValueOnce({

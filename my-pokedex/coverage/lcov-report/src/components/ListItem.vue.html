@@ -21,7 +21,7 @@
     <div class='clearfix'>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -168,7 +168,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -194,19 +194,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -253,9 +253,9 @@
       &lt;img :src="pokemonData.sprites.front_default" @click="showModal"/&gt; 
       &lt;span class="name-pokemon"&gt; {{ name }} &lt;/span&gt;
       &lt;ModalDetails v-on:closeModal="closeModal" v-if="isVisibleModal" :url="pokemonData.sprites.front_default" :name="pokemonData.name" 
-      :pokemonBaseExperience="pokemonData.base_experience" :pokemonHeight="pokemonData.height/10" :pokemonWeight="pokemonData.weight/10"
-      :pokemonType="this.indiceTypes()"
-      :pokemonInfoAbility="this.indiceAbilities()"/&gt;
+      :pokemonBaseExperiences="pokemonData.base_experience" :pokemonHeights="pokemonData.height/10" :pokemonWeights="pokemonData.weight/10"
+      :pokemonTypes="this.indiceTypes()"
+      :pokemonInfoAbilities="this.indiceAbilities()"/&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/template&gt;
@@ -279,8 +279,8 @@ export default {
     },
   },
 &nbsp;
-<span class="fstat-no" title="function not covered" >  data () {</span>
-<span class="cstat-no" title="statement not covered" >    return {</span>
+  data () {
+    return {
       pokemonData: {
         sprites: {
           front_default: ""
@@ -305,20 +305,20 @@ export default {
     }
   },
 &nbsp;
-<span class="fstat-no" title="function not covered" >  created() { </span>
-<span class="cstat-no" title="statement not covered" >    this.returnApiService(); </span>
+  created() { 
+    this.returnApiService(); 
   },
 &nbsp;
   methods: {
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    async returnApiService (){</span></span>
-<span class="cstat-no" title="statement not covered" >      const urlArray = this.url.split('/');</span>
-<span class="cstat-no" title="statement not covered" >      this.pokemonData = await pokeApiService.findPokemonById(urlArray[6]);</span>
+    async returnApiService (){
+      const urlArray = this.url.split('/');
+      this.pokemonData = await pokeApiService.findPokemonById(urlArray[6]);
     },
-<span class="fstat-no" title="function not covered" >    showModal() { </span>
-<span class="cstat-no" title="statement not covered" >      this.isVisibleModal = true;</span>
+    showModal() { 
+      this.isVisibleModal = true;
     },
-<span class="fstat-no" title="function not covered" >    closeModal() {</span>
-<span class="cstat-no" title="statement not covered" >      this.isVisibleModal = false; </span>
+    closeModal() {
+      this.isVisibleModal = false; 
     }, 
 <span class="fstat-no" title="function not covered" >    indiceTypes() {</span>
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >      return this.pokemonData.types.map(itemType =&gt; itemType.type.name)</span></span>
@@ -328,7 +328,7 @@ export default {
     }
   },
 &nbsp;
-<span class="fstat-no" title="function not covered" >  mounted() {</span>
+  mounted() {
 &nbsp;
   }
 }
@@ -338,22 +338,22 @@ export default {
 &lt;style lang="css" scoped&gt;
 &nbsp;
 .cards{
-  margin: 10px;
+  margin: 0.625rem;
   display: inline-flex;  
 }
 &nbsp;
 .list-pokemon{
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 0.063rem solid rgb(204, 204, 204);
+  border-radius: 0.25rem;
   display: flex;
   flex-direction: column;
-  background-color: whitesmoke;
-  padding: 10px 15px 20px;
+  background-color: rgb(245, 245, 245);
+  padding: 0.625rem 0.938rem 1.25rem;
 }
 &nbsp;
 .name-pokemon{
-  font-size: 17px;
-  color: #2c3e50;
+  font-size: 1.063rem;
+  color: rgb(44, 62, 80);
   text-transform: capitalize;
   font-weight: 600;
 }
@@ -365,7 +365,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 10 2021 17:26:03 GMT-0300 (Horário Padrão de Brasília)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Nov 12 2021 11:07:44 GMT-0300 (Horário Padrão de Brasília)
 </div>
 </div>
 <script src="../../prettify.js"></script>
